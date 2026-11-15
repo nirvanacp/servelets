@@ -1,0 +1,10 @@
+{
+  "servelet": 1,
+  "id": "hn-bookmarks",
+  "name": "Hacker News bookmarks store",
+  "language": "go",
+  "framework": "default",
+  "runtime": "local",
+  "engine": "wasm",
+  "healthPath": "/health"
+}
