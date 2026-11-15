@@ -1,0 +1,343 @@
+[
+  {
+    "method": "GET",
+    "path": "/health",
+    "expectStatus": 200
+  },
+  {
+    "method": "GET",
+    "path": "/v1/library",
+    "expectStatus": 409
+  },
+  {
+    "method": "GET",
+    "path": "/v1/categories",
+    "expectStatus": 409
+  },
+  {
+    "method": "POST",
+    "path": "/v1/library",
+    "body": {
+      "expectedHandle": "not a handle"
+    },
+    "expectStatus": 400
+  },
+  {
+    "method": "POST",
+    "path": "/v1/library",
+    "body": {
+      "expectedHandle": "Genesis"
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/library",
+    "body": {
+      "expectedHandle": "someone_else"
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "GET",
+    "path": "/v1/library",
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "2d8e3f40-5162-4c73-ad84-9e0f1a2b3c4d",
+      "kind": "category.create",
+      "payload": {
+        "id": "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b",
+        "name": "Reading"
+      }
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "2d8e3f40-5162-4c73-ad84-9e0f1a2b3c4d",
+      "kind": "category.create",
+      "payload": {
+        "id": "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b",
+        "name": "Reading"
+      }
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "2d8e3f40-5162-4c73-ad84-9e0f1a2b3c4d",
+      "kind": "category.create",
+      "payload": {
+        "id": "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b",
+        "name": "Later"
+      }
+    },
+    "expectStatus": 409
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "3e9f4051-6273-4d84-be95-af1a2b3c4d5e",
+      "kind": "category.create",
+      "payload": {
+        "id": "1c7d2e3f-4051-4b62-9c73-8d9e0f1a2b3c",
+        "name": "  reading "
+      }
+    },
+    "expectStatus": 409
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "3e9f4051-6273-4d84-be95-af1a2b3c4d5e",
+      "kind": "category.create",
+      "payload": {
+        "id": "1c7d2e3f-4051-4b62-9c73-8d9e0f1a2b3c",
+        "name": "   "
+      }
+    },
+    "expectStatus": 400
+  },
+  {
+    "method": "GET",
+    "path": "/v1/categories",
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "4fa05162-7384-4e95-8fa6-b02b3c4d5e6f",
+      "kind": "bookmark.setCategories",
+      "payload": {
+        "postId": "1790000000000000001",
+        "expectedRevision": null,
+        "categoryIds": [
+          "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b"
+        ],
+        "url": "https://x.com/Genesis/status/1790000000000000001?s=20",
+        "snapshot": {
+          "authorHandle": "genesis",
+          "authorName": "Genesis",
+          "text": "A saved post",
+          "textState": "complete",
+          "capturedAtMs": 1,
+          "media": {
+            "kind": "none",
+            "count": 0
+          },
+          "links": [
+            {
+              "text": "example",
+              "href": "https://example.com"
+            }
+          ]
+        }
+      }
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "50b16273-8495-4fa6-90b7-c13c4d5e6f70",
+      "kind": "bookmark.setCategories",
+      "payload": {
+        "postId": "1790000000000000001",
+        "expectedRevision": null,
+        "categoryIds": [
+          "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b"
+        ],
+        "url": "https://x.com/Genesis/status/1790000000000000001",
+        "snapshot": {
+          "authorHandle": "genesis",
+          "authorName": "Genesis",
+          "text": "A saved post",
+          "textState": "complete",
+          "capturedAtMs": 1,
+          "media": {
+            "kind": "none",
+            "count": 0
+          },
+          "links": [
+            {
+              "text": "example",
+              "href": "https://example.com"
+            }
+          ]
+        }
+      }
+    },
+    "expectStatus": 409
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bookmarks/lookup",
+    "body": {
+      "postIds": [
+        "1790000000000000001",
+        "42"
+      ]
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bookmarks/lookup",
+    "body": {
+      "postIds": [
+        "1790000000000000001",
+        "1790000000000000001"
+      ]
+    },
+    "expectStatus": 400
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bookmarks/query",
+    "body": {
+      "categoryId": null,
+      "query": "",
+      "limit": 20
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bookmarks/query",
+    "body": {
+      "categoryId": "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b",
+      "query": "SAVED",
+      "limit": 20
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bookmarks/query",
+    "body": {
+      "query": "",
+      "limit": 10
+    },
+    "expectStatus": 400
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bookmarks/query",
+    "body": {
+      "categoryId": "1c7d2e3f-4051-4b62-9c73-8d9e0f1a2b3c",
+      "query": "",
+      "limit": 20
+    },
+    "expectStatus": 409
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bookmarks/query",
+    "body": {
+      "query": "",
+      "limit": 20,
+      "cursor": "eyJsaWJyYXJ5SWQiOiJ4In0"
+    },
+    "expectStatus": 409
+  },
+  {
+    "method": "GET",
+    "path": "/v1/operations/2d8e3f40-5162-4c73-ad84-9e0f1a2b3c4d",
+    "expectStatus": 200
+  },
+  {
+    "method": "GET",
+    "path": "/v1/operations/83e495a6-b7c8-42d9-83ea-f46f708192a3",
+    "expectStatus": 404
+  },
+  {
+    "method": "GET",
+    "path": "/v1/operations/not-an-id",
+    "expectStatus": 400
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "50b16273-8495-4fa6-90b7-c13c4d5e6f70",
+      "kind": "category.delete",
+      "payload": {
+        "id": "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b",
+        "expectedRevision": 1
+      }
+    },
+    "expectStatus": 409
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "61c27384-95a6-40b7-a1c8-d24d5e6f7081",
+      "kind": "bookmark.remove",
+      "payload": {
+        "postId": "1790000000000000001",
+        "expectedRevision": 2
+      }
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "72d38495-a6b7-41c8-b2d9-e35e6f708192",
+      "kind": "category.rename",
+      "payload": {
+        "id": "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b",
+        "expectedRevision": 1,
+        "name": "Read later"
+      }
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "83e495a6-b7c8-42d9-83ea-f46f708192a3",
+      "kind": "category.delete",
+      "payload": {
+        "id": "0b6c1d2e-3f40-4a51-8b62-7c8d9e0f1a2b",
+        "expectedRevision": 4
+      }
+    },
+    "expectStatus": 200
+  },
+  {
+    "method": "POST",
+    "path": "/v1/operations",
+    "body": {
+      "operationId": "3e9f4051-6273-4d84-be95-af1a2b3c4d5e",
+      "kind": "category.merge",
+      "payload": {}
+    },
+    "expectStatus": 400
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/library",
+    "expectStatus": 404
+  },
+  {
+    "method": "GET",
+    "path": "/v1/unknown",
+    "expectStatus": 404
+  }
+]

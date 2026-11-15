@@ -7,6 +7,7 @@ This directory holds one servelet per directory, named after its id (the `id` in
 | Servelet | Used by | What it stores |
 | --- | --- | --- |
 | [`hn-bookmarks`](hn-bookmarks/) | the `hn-bookmarks` applet's `bookmarks` service | Hacker News bookmarks, categories and their order |
+| [`x-bookmarks`](x-bookmarks/) | the `x-bookmarks` applet's `bookmarks` service | X categories and the posts saved in them |
 
 ## How an applet uses a servelet
 

@@ -1,0 +1,10 @@
+{
+  "servelet": 1,
+  "id": "x-bookmarks",
+  "name": "X categories store",
+  "language": "go",
+  "framework": "default",
+  "runtime": "local",
+  "engine": "wasm",
+  "healthPath": "/health"
+}
