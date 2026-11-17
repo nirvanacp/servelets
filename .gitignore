@@ -1,1 +1,8 @@
+# Build output and local databases; `let-servelet build` and `let-servelet run`
+# regenerate them.
 dist/
+*.wasm
+*.sqlite3
+*.sqlite3-*
+go.work
+go.work.sum
