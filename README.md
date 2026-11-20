@@ -48,3 +48,7 @@ npx let-servelet create servelets/<id> --id <id> --name "<name>"
 ## Contributing
 
 Follow the Genesis root `AGENTS.md`, Let's servelet builder instructions in `let/factory/servelets/AGENTS.md`, and this repository's [AGENTS.md](AGENTS.md). Record every schema change in the servelet's **Schema** table with its new `servelet.Migrate` step, and never change a step that has shipped. Keep `checks.json` covering every route, and run `let-servelet check` before committing.
+
+## Licence
+
+MIT, see [LICENSE](LICENSE).
